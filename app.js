@@ -209,12 +209,13 @@ app.delete('/deleteListing/:id', function (req, res) {
     });
 });
 
-app.get('/fetchuser/:id', function (req, res) {
-    var username = req.params.id.toString();
+app.get('/fetchuser/:username', function (req, res) {
+    var username = req.params.username.toString();
     console.log(username);
-    User.find({
+    User.findOne({
         username: username
     }).then(function (user) {
+        console.log(user);
         res.send(user);
 
     }).catch(function (e) {
